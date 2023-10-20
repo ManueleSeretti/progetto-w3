@@ -36,8 +36,8 @@ public class Application {
         Supplier<Riviste> rivistaSupplier = () -> new Riviste(faker.book().title(), rndm.nextInt(1990, 2023), rndm.nextInt(20, 200), Periodic.randomPeriodic());
         Supplier<Utenti> utentiSupplier = () -> new Utenti(faker.name().firstName(), faker.name().lastName(), LocalDate.of(rndm.nextInt(1970, 2005), rndm.nextInt(1, 12), rndm.nextInt(1, 31)));
         Scanner input = new Scanner(System.in);
-        try {
-            //CREAZIONE NUOVI LIBRI E RIVISTE
+
+        //CREAZIONE NUOVI LIBRI E RIVISTE
 
 //        for (int i = 0; i < 40; i++) {
 //            pDao.save(libroSupplier.get());
@@ -45,7 +45,7 @@ public class Application {
 //        }
 //        System.out.println("Hello World!");
 
-            //CREAZIONE NUOVI UTENTI
+        //CREAZIONE NUOVI UTENTI
 
 //        for (int i = 0; i < 50; i++) {
 //
@@ -53,7 +53,7 @@ public class Application {
 //
 //        }
 
-            //CREAZIONE NUOVI PRESTITI
+        //CREAZIONE NUOVI PRESTITI
 
 //        for (int i = 0; i < 150; i++) {
 //
@@ -73,7 +73,8 @@ public class Application {
 //        }
 
 
-            while (true) {
+        while (true) {
+            try {
                 System.out.println("COSA VUOI CERCARE? PREMI 0 PER USCIRE DAL PROGRAMMA");
                 System.out.println("1-PUBBLICAZIONE TRAMITE ID");
                 System.out.println("2-PUBBLICAZIONE TRAMITE ANNO");
@@ -146,30 +147,34 @@ public class Application {
                         break;
                     }
                 }
-
+            } catch (Exception ex) {
+                System.err.println(ex.getMessage());
             }
+        }
+        emf.close();
+        em.close();
+        input.close();
 
+        // RICERCA DI UNA PUBBLICAZIONE TRAMITE ID
 
-            // RICERCA DI UNA PUBBLICAZIONE TRAMITE ID
+        //Pubblicazioni pub=pDao.findById(23);
+        //System.out.println(pub);
+        // ELIMINAZIONE DI UNA PUBBLICAZIONE TRAMITE ID
 
-            //Pubblicazioni pub=pDao.findById(23);
-            //System.out.println(pub);
-            // ELIMINAZIONE DI UNA PUBBLICAZIONE TRAMITE ID
+        // pDao.findByIdAndDelete(23);
 
-            // pDao.findByIdAndDelete(23);
-
-            //RICERCA PER ANNO
+        //RICERCA PER ANNO
 //
 //        List<Pubblicazioni> lista = pDao.findByYear(2000);
 //        lista.forEach(System.out::println);
 
-            //RICERCA PER AUTORE
+        //RICERCA PER AUTORE
 //
 //        List<Pubblicazioni> listaAut = pDao.findByAuthor("Max Galli");
 //        listaAut.forEach(System.out::println);
 
 
-            //RICERCA PER TITOLO
+        //RICERCA PER TITOLO
 //        List<Pubblicazioni> listaTit = pDao.findByTitle("C");
 //        if (listaTit.size() > 0)
 //            listaTit.forEach(System.out::println);
@@ -182,19 +187,13 @@ public class Application {
 //        else System.out.println("nessun libro non riconsegnato");
 
 
-            //RICERCA TUTTI QUELLI NON RICONSEGNATI
+        //RICERCA TUTTI QUELLI NON RICONSEGNATI
 
 //        List<Prestiti> listaPre = preDao.findAllNotReturn();
 //        if (!listaPre.isEmpty())
 //            listaPre.forEach(System.out::println);
 //        else System.out.println("nessun libro non riconsegnato");
 //
-        } catch (Exception ex) {
-            System.err.println(ex.getMessage());
-        } finally {
-            emf.close();
-            em.close();
-            input.close();
-        }
+
     }
 }

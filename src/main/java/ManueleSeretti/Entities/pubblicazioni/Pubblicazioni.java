@@ -1,6 +1,9 @@
-package ManueleSeretti.pubblicazioni;
+package ManueleSeretti.Entities.pubblicazioni;
+
+import ManueleSeretti.Entities.Prestiti;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -11,6 +14,8 @@ public abstract class Pubblicazioni {
     protected String titolo;
     protected int anno;
     protected int nPag;
+    @OneToMany(mappedBy = "elemento")
+    Set<Prestiti> noleggi;
 
     protected Pubblicazioni() {
     }

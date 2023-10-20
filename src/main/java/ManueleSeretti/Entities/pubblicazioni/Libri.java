@@ -1,4 +1,4 @@
-package ManueleSeretti.pubblicazioni;
+package ManueleSeretti.Entities.pubblicazioni;
 
 import javax.persistence.Entity;
 

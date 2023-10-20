@@ -29,6 +29,7 @@ public class Prestiti {
         this.utente = utente;
         this.elemento = elemento;
         this.data_inizio = data_inizio;
+        this.data_prevista = data_inizio.plusDays(30);
     }
 
     public int getId() {

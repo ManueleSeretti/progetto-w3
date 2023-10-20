@@ -21,11 +21,11 @@ public class PubblicazioniDAO {
         System.out.println("Nuova pubblicazione salvata correttamente");
     }
 
-    public Pubblicazioni findById(long id) {
+    public Pubblicazioni findById(int id) {
         return em.find(Pubblicazioni.class, id);
     }
 
-    public void findByIdAndDelete(long id) {
+    public void findByIdAndDelete(int id) {
 
         Pubblicazioni found = em.find(Pubblicazioni.class, id);
         if (found != null) {

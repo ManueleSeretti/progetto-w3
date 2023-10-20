@@ -20,11 +20,11 @@ public class PrestitiDAO {
         System.out.println("Nuovo noleggio salvato correttamente");
     }
 
-    public Prestiti findById(long id) {
+    public Prestiti findById(int id) {
         return em.find(Prestiti.class, id);
     }
 
-    public void findByIdAndDelete(long id) {
+    public void findByIdAndDelete(int id) {
 
         Prestiti found = em.find(Prestiti.class, id);
         if (found != null) {

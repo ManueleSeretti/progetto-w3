@@ -21,11 +21,11 @@ public class UtentiDAO {
         System.out.println("Nuovo utente salvato correttamente");
     }
 
-    public Utenti findById(long id) {
+    public Utenti findById(int id) {
         return em.find(Utenti.class, id);
     }
 
-    public void findByIdAndDelete(long id) {
+    public void findByIdAndDelete(int id) {
 
         Utenti found = em.find(Utenti.class, id);
         if (found != null) {

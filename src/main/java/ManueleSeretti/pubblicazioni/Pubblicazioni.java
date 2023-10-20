@@ -1,4 +1,4 @@
-package pubblicazioni;
+package ManueleSeretti.pubblicazioni;
 
 import javax.persistence.*;
 
@@ -15,8 +15,7 @@ public abstract class Pubblicazioni {
     protected Pubblicazioni() {
     }
 
-    public Pubblicazioni(int codIsbm, String titolo, int anno, int nPag) {
-        this.cod_isbm = codIsbm;
+    public Pubblicazioni(String titolo, int anno, int nPag) {
         this.titolo = titolo;
         this.anno = anno;
         this.nPag = nPag;
@@ -25,7 +24,7 @@ public abstract class Pubblicazioni {
     public int getCod_isbm() {
         return cod_isbm;
     }
-    
+
     public String getTitolo() {
         return titolo;
     }

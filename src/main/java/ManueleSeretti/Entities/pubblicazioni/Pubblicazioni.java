@@ -14,7 +14,7 @@ public abstract class Pubblicazioni {
     protected String titolo;
     protected int anno;
     protected int nPag;
-    @OneToMany(mappedBy = "elemento")
+    @OneToMany(mappedBy = "elemento", cascade = CascadeType.REMOVE)
     Set<Prestiti> noleggi;
 
     protected Pubblicazioni() {

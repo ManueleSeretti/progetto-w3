@@ -1,9 +1,6 @@
 package ManueleSeretti.Entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Set;
 
@@ -17,7 +14,7 @@ public class Utenti {
     private String cognome;
     private LocalDate data_nascita;
 
-    @OneToMany(mappedBy = "utente")
+    @OneToMany(mappedBy = "utente", cascade = CascadeType.REMOVE)
     private Set<Prestiti> noleggi;
 
     public Utenti() {

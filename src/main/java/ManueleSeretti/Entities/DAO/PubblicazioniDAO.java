@@ -4,6 +4,8 @@ import ManueleSeretti.Entities.pubblicazioni.Pubblicazioni;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.TypedQuery;
+import java.util.List;
 
 public class PubblicazioniDAO {
 
@@ -37,7 +39,17 @@ public class PubblicazioniDAO {
         } else {
             System.err.println("La Pubblicazione con l'id " + id + " non è stata trovata");
         }
+    }
 
+    public List<Pubblicazioni> findByYear(int y) {
+        TypedQuery<Pubblicazioni> lista = em.createQuery("SELECT p FROM Pubblicazioni p WHERE p.anno = :year", Pubblicazioni.class);
+        lista.setParameter("year", y);
+        return lista.getResultList();
+    }
 
+    public List<Pubblicazioni> findByAuthor(String a) {
+        TypedQuery<Pubblicazioni> lista = em.createQuery("SELECT p FROM Pubblicazioni p WHERE p.autore = :autore", Pubblicazioni.class);
+        lista.setParameter("autore", a);
+        return lista.getResultList();
     }
 }

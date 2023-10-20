@@ -80,5 +80,28 @@ public class Application {
 //
 //        List<Pubblicazioni> listaAut = pDao.findByAuthor("Max Galli");
 //        listaAut.forEach(System.out::println);
+
+
+        //RICERCA PER TITOLO
+//        List<Pubblicazioni> listaTit = pDao.findByTitle("C");
+//        if (listaTit.size() > 0)
+//            listaTit.forEach(System.out::println);
+//        else System.out.println("nessun libro trovato");
+
+//RICERCA LIBRI IN NOLEGGIO DI UN UTENTE
+//        List<Prestiti> listaPreUtente = preDao.findAllNotReturnByUtente(82);
+//        if (!listaPreUtente.isEmpty())
+//            listaPreUtente.forEach(System.out::println);
+//        else System.out.println("nessun libro non riconsegnato");
+
+
+        //RICERCA TUTTI QUELLI NON RICONSEGNATI
+//
+//        List<Prestiti> listaPre = preDao.findAllNotReturn();
+//        if (!listaPre.isEmpty())
+//            listaPre.forEach(System.out::println);
+//        else System.out.println("nessun libro non riconsegnato");
+
+
     }
 }

@@ -52,4 +52,10 @@ public class PubblicazioniDAO {
         lista.setParameter("autore", a);
         return lista.getResultList();
     }
+
+    public List<Pubblicazioni> findByTitle(String title) {
+        TypedQuery<Pubblicazioni> getPubblicazioni = em.createQuery("SELECT p FROM Pubblicazioni p WHERE LOWER(p.titolo) LIKE LOWER(CONCAT(:title, '%'))", Pubblicazioni.class);
+        getPubblicazioni.setParameter("title", title);
+        return getPubblicazioni.getResultList();
+    }
 }

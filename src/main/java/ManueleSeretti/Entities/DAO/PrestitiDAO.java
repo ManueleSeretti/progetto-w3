@@ -4,6 +4,8 @@ import ManueleSeretti.Entities.Prestiti;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.TypedQuery;
+import java.util.List;
 
 public class PrestitiDAO {
     private final EntityManager em;
@@ -38,5 +40,16 @@ public class PrestitiDAO {
         }
 
 
+    }
+
+    public List<Prestiti> findAllNotReturn() {
+        TypedQuery<Prestiti> lista = em.createQuery("SELECT p FROM Prestiti p WHERE p.data_restituzione IS null OR p.data_prevista<p.data_restituzione", Prestiti.class);
+        return lista.getResultList();
+    }
+
+    public List<Prestiti> findAllNotReturnByUtente(int id) {
+        TypedQuery<Prestiti> lista = em.createQuery("SELECT p FROM Prestiti p WHERE p.data_restituzione IS null AND p.utente.id = :id", Prestiti.class);
+        lista.setParameter("id", id);
+        return lista.getResultList();
     }
 }

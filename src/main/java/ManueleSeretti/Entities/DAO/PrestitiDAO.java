@@ -5,6 +5,7 @@ import ManueleSeretti.Entities.Prestiti;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
+import java.time.LocalDate;
 import java.util.List;
 
 public class PrestitiDAO {
@@ -43,7 +44,9 @@ public class PrestitiDAO {
     }
 
     public List<Prestiti> findAllNotReturn() {
-        TypedQuery<Prestiti> lista = em.createQuery("SELECT p FROM Prestiti p WHERE p.data_restituzione IS null OR p.data_prevista<p.data_restituzione", Prestiti.class);
+        TypedQuery<Prestiti> lista = em.createQuery("SELECT p FROM Prestiti p WHERE p.data_restituzione IS null AND p.data_prevista< :now", Prestiti.class);
+        LocalDate d = LocalDate.now();
+        lista.setParameter("now", d);
         return lista.getResultList();
     }
 

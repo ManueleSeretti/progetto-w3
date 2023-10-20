@@ -43,20 +43,15 @@ public class Application {
 //            pDao.save(libroSupplier.get());
 //            pDao.save(rivistaSupplier.get());
 //        }
-//        System.out.println("Hello World!");
 
         //CREAZIONE NUOVI UTENTI
 
 //        for (int i = 0; i < 50; i++) {
-//
 //            uDao.save(utentiSupplier.get());
-//
 //        }
 
         //CREAZIONE NUOVI PRESTITI
-
 //        for (int i = 0; i < 150; i++) {
-//
 //            Pubblicazioni p = pDao.findById(rndm.nextInt(1, 80));
 //            Utenti u = uDao.findById(rndm.nextInt(81, 130));
 //            Prestiti nol = new Prestiti(u, p, LocalDate.of(rndm.nextInt(2015, 2023), rndm.nextInt(1, 12), rndm.nextInt(1, 31)));
@@ -65,7 +60,6 @@ public class Application {
 //               LocalDate d = nol.getData_inizio();
 //               LocalDate d1 = d.plusDays(rndm.nextInt(0, 30));
 //               nol.setData_restituzione(d1);
-//
 //            } else {
 //                nol.setData_restituzione(null);
 //            }
@@ -120,7 +114,7 @@ public class Application {
                         List<Pubblicazioni> listaTit = pDao.findByTitle(title);
                         if (!listaTit.isEmpty())
                             listaTit.forEach(System.out::println);
-                        else System.out.println("nessun libro trovato");
+                        else System.out.println("nessuna pubblicazione trovata");
                         break;
                     }
                     case 5: {
@@ -130,7 +124,7 @@ public class Application {
                         List<Prestiti> listaPreUtente = preDao.findAllNotReturnByUtente(id_utente);
                         if (!listaPreUtente.isEmpty())
                             listaPreUtente.forEach(System.out::println);
-                        else System.out.println("nessun libro non riconsegnato");
+                        else System.out.println("nessuna pubblicazione non riconsegnata");
                         break;
                     }
                     case 6: {
@@ -147,6 +141,9 @@ public class Application {
                         break;
                     }
                 }
+            } catch (NumberFormatException ex) {
+                System.err.println(ex.getMessage());
+                System.out.println("scelta non valida...");
             } catch (Exception ex) {
                 System.err.println(ex.getMessage());
             }
@@ -154,46 +151,6 @@ public class Application {
         emf.close();
         em.close();
         input.close();
-
-        // RICERCA DI UNA PUBBLICAZIONE TRAMITE ID
-
-        //Pubblicazioni pub=pDao.findById(23);
-        //System.out.println(pub);
-        // ELIMINAZIONE DI UNA PUBBLICAZIONE TRAMITE ID
-
-        // pDao.findByIdAndDelete(23);
-
-        //RICERCA PER ANNO
-//
-//        List<Pubblicazioni> lista = pDao.findByYear(2000);
-//        lista.forEach(System.out::println);
-
-        //RICERCA PER AUTORE
-//
-//        List<Pubblicazioni> listaAut = pDao.findByAuthor("Max Galli");
-//        listaAut.forEach(System.out::println);
-
-
-        //RICERCA PER TITOLO
-//        List<Pubblicazioni> listaTit = pDao.findByTitle("C");
-//        if (listaTit.size() > 0)
-//            listaTit.forEach(System.out::println);
-//        else System.out.println("nessun libro trovato");
-
-//RICERCA LIBRI IN NOLEGGIO DI UN UTENTE
-//        List<Prestiti> listaPreUtente = preDao.findAllNotReturnByUtente(82);
-//        if (!listaPreUtente.isEmpty())
-//            listaPreUtente.forEach(System.out::println);
-//        else System.out.println("nessun libro non riconsegnato");
-
-
-        //RICERCA TUTTI QUELLI NON RICONSEGNATI
-
-//        List<Prestiti> listaPre = preDao.findAllNotReturn();
-//        if (!listaPre.isEmpty())
-//            listaPre.forEach(System.out::println);
-//        else System.out.println("nessun libro non riconsegnato");
-//
 
     }
 }
